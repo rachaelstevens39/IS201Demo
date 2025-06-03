@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Wars Jeopardy</title>
+    <link rel="stylesheet" href="css/ai.css" />
+</head>
+
+<body>
+    <div class="board">
+        <div class="category">Characters</div>
+        <div class="category">Planets</div>
+        <div class="category">Ships</div>
+        <div class="category">Quotes</div>
+        <div class="category">Droids</div>
+
+        <!-- Each cell is a question value -->
+        <div class="cell" data-question="Who is Luke Skywalker?">$100</div>
+        <div class="cell" data-question="What planet is Tatooine?">$100</div>
+        <div class="cell" data-question="What is the Millennium Falcon?">$100</div>
+        <div class="cell" data-question="Who said 'Do or do not, there is no try'?">$100</div>
+        <div class="cell" data-question="Who is R2-D2?">$100</div>
+
+        <div class="cell" data-question="Who is Darth Vader?">$200</div>
+        <div class="cell" data-question="What is Hoth?">$200</div>
+        <div class="cell" data-question="What is an X-Wing?">$200</div>
+        <div class="cell" data-question="Who said 'I am your father'?">$200</div>
+        <div class="cell" data-question="Who is C-3PO?">$200</div>
+
+        <div class="cell" data-question="Who is Leia Organa?">$300</div>
+        <div class="cell" data-question="What is Endor?">$300</div>
+        <div class="cell" data-question="What is a TIE Fighter?">$300</div>
+        <div class="cell" data-question="Who said 'I’ve got a bad feeling about this'?">$300</div>
+        <div class="cell" data-question="Who is BB-8?">$300</div>
+
+        <div class="cell" data-question="Who is Han Solo?">$400</div>
+        <div class="cell" data-question="What is Dagobah?">$400</div>
+        <div class="cell" data-question="What is a Star Destroyer?">$400</div>
+        <div class="cell" data-question="Who said 'Chewie, we’re home'?">$400</div>
+        <div class="cell" data-question="Who is K-2SO?">$400</div>
+
+        <div class="cell" data-question="Who is Obi-Wan Kenobi?">$500</div>
+        <div class="cell" data-question="What is Mustafar?">$500</div>
+        <div class="cell" data-question="What is the Death Star?">$500</div>
+        <div class="cell" data-question="Who said 'You were the chosen one!'?">$500</div>
+        <div class="cell" data-question="Who is IG-88?">$500</div>
+    </div>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="question-text"></p>
+            <button id="close">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.cell').forEach(cell => {
+            cell.addEventListener('click', () => {
+                const question = cell.getAttribute('data-question');
+                document.getElementById('question-text').textContent = question;
+                document.getElementById('modal').classList.remove('hidden');
+                cell.textContent = "";
+                cell.classList.add('disabled');
+            });
+        });
+
+        document.getElementById('close').addEventListener('click', () => {
+            document.getElementById('modal').classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>
